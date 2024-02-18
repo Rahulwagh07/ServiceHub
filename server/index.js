@@ -8,7 +8,7 @@ const fileUpload = require("express-fileupload");
 const dotenv = require("dotenv");
 
 // Import routes
- 
+const userRoutes = require("./routes/User");
 
 dotenv.config();
 
@@ -36,6 +36,8 @@ app.use(
 
 // Cloudinary connection
 cloudinaryConnect();
+
+app.use("/auth", userRoutes);
 
  
 

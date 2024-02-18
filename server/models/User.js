@@ -6,6 +6,8 @@ const userSchema = new mongoose.Schema({
     password: { type: String, required: true },
     accountType: { type: String, enum: ['admin', 'serviceCenter', 'visitor'], default: 'visitor' },
     token: { type: String, },
+    image: { type: String,
+    },
 }, { timestamps: true });
 
 const User = mongoose.model('User', userSchema);
