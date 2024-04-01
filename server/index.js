@@ -37,7 +37,7 @@ app.use(
 // Cloudinary connection
 cloudinaryConnect();
 
-app.use("/auth", userRoutes);
+app.use("/api/auth", userRoutes);
 
  
 
