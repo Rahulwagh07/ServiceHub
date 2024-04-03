@@ -4,7 +4,6 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const User = require("../models/User");
 
-//auth
 exports.auth = async (req, res, next) => {
     try{
         //extract token
@@ -42,7 +41,6 @@ exports.auth = async (req, res, next) => {
     }
 }
 
- 
 exports.isVisitor = async (req, res, next) => {
  try{
         if(req.user.accountType !== "Visitor") {
@@ -61,8 +59,6 @@ exports.isVisitor = async (req, res, next) => {
  }
 }
 
-
- 
 exports.isAdmin = async (req, res, next) => {
     try{
            if(req.user.accountType !== "Admin") {

@@ -150,13 +150,7 @@ exports.login = async (req, res) => {
 exports.sendotp = async (req, res) => {
 	try {
 		const { email } = req.body;
-
-		// Check if user is already present
-		// Find user with provided email
 		const checkUserPresent = await User.findOne({ email });
-		// to be used in case of signup
-
-		// If user found with provided email
 		if (checkUserPresent) {
 			// Return 401 Unauthorized status code with error message
 			return res.status(401).json({

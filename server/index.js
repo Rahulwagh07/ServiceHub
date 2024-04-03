@@ -9,6 +9,9 @@ const dotenv = require("dotenv");
 
 // Import routes
 const userRoutes = require("./routes/User");
+const serviceCenterRoutes = require("./routes/ServiceCenter");
+const categoryRoutes = require("./routes/Category");
+
 
 dotenv.config();
 
@@ -38,6 +41,8 @@ app.use(
 cloudinaryConnect();
 
 app.use("/api/auth", userRoutes);
+app.use("/api/serviceCenter", serviceCenterRoutes);
+app.use("./api", categoryRoutes)
 
  
 
