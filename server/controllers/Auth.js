@@ -3,6 +3,7 @@ const User = require("../models/User");
 const OTP = require("../models/OTP");
 const jwt = require("jsonwebtoken");
 const otpGenerator = require("otp-generator");
+const mailSender = require("../utils/mailsender")
 require("dotenv").config();
 
 exports.signup = async (req, res) => {
@@ -172,7 +173,12 @@ exports.sendotp = async (req, res) => {
 		}
 		const otpPayload = { email, otp };
 		const otpBody = await OTP.create(otpPayload);
-		res.status(200).json({
+		await mailSender(
+			email,
+			"OTP || ServiceHub",
+			`Your OTP ${otp} for email verification to join Serivehub.`
+		);
+		return res.status(200).json({
 			success: true,
 			message: `OTP Sent Successfully`,
 			otp,

@@ -1,12 +1,146 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+ 
+html, body {
+  overflow-x: hidden;
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #afb2bf;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 3px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #000814;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #afb2bf;
+  border-radius: 10px;
+  visibility: hidden;
+}
+
+*:active::-webkit-scrollbar-thumb,
+*:focus::-webkit-scrollbar-thumb,
+*:hover::-webkit-scrollbar-thumb {
+  visibility: visible;
+}
+
+/* Hide default styling of details/summary */
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+ /* for dark mode */
+/* 
+:root {
+    --color-bg: #000000;
+    --color-fg: #ffffff;
+  }
+  
+  @media (prefers-color-scheme: light) {
+    :root {
+      --color-bg: #ffffff;
+      --color-fg: #000000;
+    }
+  }
+  
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+  } */
+  
+.color2{
+  background-color: 	#F4F4F3;
+}
+.color3{
+  background-color: #7877E6;
+}
+.box-shadow{
+  box-shadow: rgba(157, 157, 157, 0.2) 0px 4px 10px;
+ 
+}
+.section_bg{
+  background-color: rgba(247, 248, 252, 1);
+  
+}
+.border-brand{
+  border-color: rgb(102, 116, 204);
+  border-width: 1px;
+}
+ 
+.form-style {
+  @apply rounded-lg  p-3 text-[16px] leading-[24px] text-black shadow-white-50 placeholder:text-richblack-400 focus:outline-none
+  dark:bg-transparent dark:text-slate-400 focus:bg-transparent active:bg-transparent;
+}
+@layer utilities {
+  .shadow-white-50 {
+    box-shadow: rgba(255, 255, 255, 0.5) 0px 1px 0px 0px;
+  }
+}
+ 
+
+.text_gradient{
+  @apply bg-gradient-to-br from-[#833AB4] via-[#FD1D1D] to-[#FCB045] bg-clip-text  font-semibold text-transparent;
+}
+
+.custom_container{
+  @apply fixed inset-0 z-[1000] !mt-0 grid place-items-center overflow-auto bg-white-25 dark:bg-slate-900 bg-opacity-100;
+}
+/* circle Animation css ref:from thecodehelp.in */  
+.circle_animation {
+  animation: spin 55s linear infinite;
+}
+.crotate {
+  animation:spin 55s linear infinite reverse;
+}
+
+.icon_style {
+  position: absolute;
+  inset: 0px;
+  min-width: 50%;
+  max-width: 50%;
+  min-height: 50%;
+  max-height: 50%;
+  margin: auto;
+}
+
+.circle_animation2 {
+  animation: spin 25s linear infinite reverse;
+}
+
+.crotate2 {
+  animation: spin 45s linear infinite;
+}
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+
+/* Dark theme CSS */
+
+.dark{
+   .section_bg{
+    background-color: rgba(15, 23, 42, 0.7);
+   }
+   .text-black{
+    color: rgb(148, 163, 184);
+   }
 } 
