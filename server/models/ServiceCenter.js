@@ -5,12 +5,16 @@ const serviceCenterSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    location: {
-        address: String,
-        city: String,
-        state: String,
-        zipCode: String
+    ownerId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
     },
+    // location: {
+    //     address: String,
+    //     city: String,
+    //     state: String,
+    //     zipCode: String
+    // },
     phone: {
         type: String
     },
@@ -39,9 +43,9 @@ const serviceCenterSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    images: [{
-        type: String
-    }] // Array of image URLs
+    image: {
+        type : String,
+    }
 }, { timestamps: true });
 
 const ServiceCenter = mongoose.model('ServiceCenter', serviceCenterSchema);

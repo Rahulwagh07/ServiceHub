@@ -8,6 +8,8 @@ const {
   createServiceCenter,
   deleteServiceCenter,
   getServiceCenterDetails,
+  getAllServicesOfOwner,
+  editService,
 } = require("../controllers/ServiceCenter")
 
 // Rating Controllers Import
@@ -27,8 +29,9 @@ const { auth, isServiceCenter, isVisitor, isAdmin} = require("../middlewares/aut
 
 router.post("/createServiceCenter", auth, isServiceCenter, createServiceCenter)
 router.post("/deleteServiceCenter", auth, isServiceCenter, deleteServiceCenter)
-router.post("/getServiceCenterDetails", getServiceCenterDetails)
- 
+router.get("/getServiceCenterDetails", getServiceCenterDetails)
+router.get("/getAllServicesOfOwner", auth, isServiceCenter, getAllServicesOfOwner)
+router.post("/editService", auth, isServiceCenter, editService)
 
 // ********************************************************************************************************
 //                                      Rating and Review
