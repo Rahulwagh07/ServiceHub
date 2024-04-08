@@ -15,7 +15,7 @@ function Login() {
   return (
     <div className='flex items-center justify-center mt-20'>
         { !showLoginTemplate ? (
-            <div className=' shadow-lg  dark:bg-slate-800 flex flex-col justify-center items-center p-16'>
+            <div className=' shadow-lg flex flex-col justify-center items-center p-16'>
                 <h3 className='text-lg font-semibold mb-4 flex flex-start'>Log in to HireZ</h3>
                 
                 {/* Email Login */}

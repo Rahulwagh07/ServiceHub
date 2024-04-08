@@ -12,11 +12,13 @@ export const endpoints = {
   //job endpoints
   export const profileEndpoints = {
     GET_USER_DETAILS_API: BASE_URL + "/profile/getUserDetails",
+    UPDATE_DISPLAY_PICTURE_API: BASE_URL + "/profile/updateDisplayPicture",
   }
 
   //ServiceCenter endpoints
   export const serviceCenterEndpoints = {
     GET_SERVICECENTER_DETAILS_API: BASE_URL + "/serviceCenter/getServiceCenterDetails",
     ADD_SERVICECENTER_DETAILS_API: BASE_URL + "/serviceCenter/createServiceCenter",
-    DELETE_SERVICECENTER_API: BASE_URL + "./serviceCenter/deleteServiceCenter",
+    EDIT_SERVICECENTER_API: BASE_URL + "/serviceCenter/editService",
+    GET_ALL_SERVICES_FOR_OWNER_API: BASE_URL + "/serviceCenter/getAllServicesOfOwner",
   }

@@ -47,25 +47,6 @@ details > summary {
 details > summary::-webkit-details-marker {
   display: none;
 }
-
- /* for dark mode */
-/* 
-:root {
-    --color-bg: #000000;
-    --color-fg: #ffffff;
-  }
-  
-  @media (prefers-color-scheme: light) {
-    :root {
-      --color-bg: #ffffff;
-      --color-fg: #000000;
-    }
-  }
-  
-  body {
-    background-color: var(--color-bg);
-    color: var(--color-fg);
-  } */
   
 .color2{
   background-color: 	#F4F4F3;
@@ -88,7 +69,7 @@ details > summary::-webkit-details-marker {
  
 .form-style {
   @apply rounded-lg  p-3 text-[16px] leading-[24px] text-black shadow-white-50 placeholder:text-richblack-400 focus:outline-none
-  dark:bg-transparent dark:text-slate-400 focus:bg-transparent active:bg-transparent;
+  focus:bg-transparent active:bg-transparent;
 }
 @layer utilities {
   .shadow-white-50 {
@@ -102,7 +83,7 @@ details > summary::-webkit-details-marker {
 }
 
 .custom_container{
-  @apply fixed inset-0 z-[1000] !mt-0 grid place-items-center overflow-auto bg-white-25 dark:bg-slate-900 bg-opacity-100;
+  @apply fixed inset-0 z-[1000] !mt-0 grid place-items-center overflow-auto bg-white-25  bg-opacity-100;
 }
 /* circle Animation css ref:from thecodehelp.in */  
 .circle_animation {
@@ -132,15 +113,3 @@ details > summary::-webkit-details-marker {
 @keyframes spin {
   100% { transform: rotate(360deg); }
 }
-
-
-/* Dark theme CSS */
-
-.dark{
-   .section_bg{
-    background-color: rgba(15, 23, 42, 0.7);
-   }
-   .text-black{
-    color: rgb(148, 163, 184);
-   }
-} 

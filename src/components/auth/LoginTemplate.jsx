@@ -9,7 +9,7 @@ const LoginTemplate = ({setShowLoginTemplate}) => {
   }
 
   return (
-    <div className='shadow-lg flex flex-col mx-auto justify-center items-center relative p-20 sm:p-8 dark:bg-slate-800'>
+    <div className='shadow-lg flex flex-col mx-auto justify-center items-center relative p-20 sm:p-8'>
         <p className="font-bold">Welcome Back!</p>
         <FaArrowLeftLong size={24}
           onClick={handleOnClick}

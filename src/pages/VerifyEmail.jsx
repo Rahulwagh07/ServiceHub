@@ -49,7 +49,7 @@ function VerifyEmail() {
           <div className="spinner"></div>
         </div>
       ) : (
-        <div className="max-w-[500px] sm:px-12  p-16 shadow-lg dark:bg-slate-800 sm:border-t border-sky-500">
+        <div className="max-w-[500px] sm:px-12  p-16 shadow-lg sm:border-t border-sky-500">
           <h1 className="text-black font-semibold text-[1.875rem] leading-[2.375rem]">
             Verify Email
           </h1>
@@ -68,7 +68,7 @@ function VerifyEmail() {
                   style={{
                     boxShadow: "inset 0px -1px 0px rgba(146, 143, 122, 0.18) form-style",
                   }}
-                  className="w-[48px] sm:w-[35px] lg:w-[60px] border-[1px] border-blue-150 rounded-[0.5rem] text-black aspect-square text-center focus:border-0 focus:outline-2 dark:bg-slate-700 focus:outline-blue-150"
+                  className="w-[48px] sm:w-[35px] lg:w-[60px] border-[1px] border-blue-150 rounded-[0.5rem] text-black aspect-square text-center focus:border-0 focus:outline-2 focus:outline-blue-150"
                 />
               )}
               containerStyle={{

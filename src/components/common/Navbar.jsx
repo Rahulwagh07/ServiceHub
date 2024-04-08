@@ -31,7 +31,7 @@ function Navbar() {
     
   return (
     
-    <div className='flex items-center justify-center dark:bg-slate-900 transition-all duration-300 section_bg py-4 box-shadow'>
+    <div className='flex items-center justify-center transition-all duration-300 section_bg py-4 box-shadow'>
         <nav className='flex justify-between max-w-maxScreen w-10/12 text-lg relative h-[50px] sm:h-[40px]'>
             <Link to={"/"} className='flex gap-4 items-center justify-center'>
                 <img src={logo} alt='logo' className="h-28 w-28 absolute left-[-30px] sm:top-[-25px] top-[-20px]"/>
@@ -53,7 +53,7 @@ function Navbar() {
                
             {
               showDropdown && (
-                <div  ref={dropdownRef} className='absolute rounded-lg dark:bg-slate-800 section_bg right-0 top-12 shadow-lg py-6 px-12 '>
+                <div  ref={dropdownRef} className='absolute rounded-lg section_bg right-0 top-12 shadow-lg py-6 px-12 '>
                 <div className="absolute top-[-37px] right-[45px]">
                   <RxCross1 size={24} color='#333' onClick={() => setShowDropdown(false)}/>
                 </div>

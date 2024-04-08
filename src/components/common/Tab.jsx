@@ -4,7 +4,7 @@ export default function Tab({ tabData, field, setField }) {
         style={{
           boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
         }}
-        className="flex bg-white-25 dark:bg-slate-700 p-1 gap-x-1 my-6 rounded-full max-w-max"
+        className="flex bg-white-25 p-1 gap-x-1 my-6 rounded-full max-w-max"
       >
         {tabData.map((tab) => (
           <button
@@ -13,7 +13,7 @@ export default function Tab({ tabData, field, setField }) {
             className={`${
               field === tab.type
                 ? "bg-blue-150 text-white"
-                : "bg-transparent text-pure-greys-500 dark:text-slate-400"
+                : "bg-transparent text-pure-greys-500"
             } py-2 px-5 rounded-full transition-all duration-200`}
           >
             {tab?.tabName}

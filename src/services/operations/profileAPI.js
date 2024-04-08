@@ -6,6 +6,7 @@ import { logout } from "./authAPI"
 
 const {
     GET_USER_DETAILS_API,
+    UPDATE_DISPLAY_PICTURE_API,
   } = profileEndpoints
 
 export function getUserDetails(token, navigate) {
@@ -28,3 +29,29 @@ export function getUserDetails(token, navigate) {
         dispatch(setLoading(false))
     }
 }
+
+export function updateDisplayPicture(token, formData) {
+    return async (dispatch) => {
+      const toastId = toast.loading("Loading...")
+      try {
+        const response = await apiConnector(
+          "PUT",
+          UPDATE_DISPLAY_PICTURE_API,
+          formData,
+          {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${token}`,
+          }
+        )
+  
+        if (!response.data.success) {
+          throw new Error(response.data.message)
+        }
+        toast.success("Display Picture Updated Successfully")
+        dispatch(setUser(response.data.data))
+      } catch (error) {
+          toast.error("Could Not Update Display Picture")
+      }
+      toast.dismiss(toastId)
+    }
+  }

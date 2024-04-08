@@ -16,7 +16,7 @@ const { auth, isAdmin } = require("../middlewares/auth")
 // ********************************************************************************************************
 // Category can Only be Created by Admin
 router.post("/createCategory", auth, isAdmin, createCategory)
-router.get("/showAllCategories", isAdmin, showAllCategories)
-router.post("/getCategoryPageDetails", isAdmin, categoryPageDetails)
+router.get("/showAllCategories", auth, showAllCategories)
+router.post("/getCategoryPageDetails", auth, categoryPageDetails)
 
 module.exports = router

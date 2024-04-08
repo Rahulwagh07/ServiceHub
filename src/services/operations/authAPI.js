@@ -91,9 +91,9 @@ export function sendOtp(email, navigate) {
         const userImage = response.data?.user?.image
           ? response.data.user.image
           : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.user.username} ${response.data.user.username}`
-        dispatch(setUser({ ...response.data.user}))
+        dispatch(setUser({ ...response.data.user, image: userImage}))
+        localStorage.setItem("user", JSON.stringify({ ...response.data.user, image: userImage}))
         localStorage.setItem("token", JSON.stringify(response.data.token))
-        
         if(response.data?.user?.accountType === "Visitor"){
           navigate("/search")
         } else{

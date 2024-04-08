@@ -86,7 +86,7 @@ function SignupForm() {
             value={username}
             onChange={handleOnChange}
             placeholder="Enter your name"
-            className="lg:w-[400px] md:w-full  sm:h-[42px] sm:items-center lg:ml-[-10px]  sm:w-[260px] h-[50px] rounded-md  border border-sky-500 focus:outline-none dark:bg-slate-700 pl-2"
+            className="lg:w-[400px] md:w-full  sm:h-[42px] sm:items-center lg:ml-[-10px]  sm:w-[260px] h-[50px] rounded-md  border border-sky-500 focus:outline-none pl-2"
           />
         </label>
         <label className="w-full mr-4 ml-4 sm:mr-0">
@@ -100,7 +100,7 @@ function SignupForm() {
             value={email}
             onChange={handleOnChange}
             placeholder="Enter email address"
-            className="lg:w-[400px] md:w-full  sm:h-[42px] sm:items-center lg:ml-[-10px]  sm:w-[260px] h-[50px] rounded-md  border border-sky-500 focus:outline-none dark:bg-slate-700 pl-2"
+            className="lg:w-[400px] md:w-full  sm:h-[42px] sm:items-center lg:ml-[-10px]  sm:w-[260px] h-[50px] rounded-md  border border-sky-500 focus:outline-none pl-2"
           />
         </label>
         <label className="relative w-full mr-4 ml-4 sm:mr-0">
@@ -114,7 +114,7 @@ function SignupForm() {
               value={password}
               onChange={handleOnChange}
               placeholder="Enter Password"
-              className="lg:w-[400px] md:w-full  sm:h-[42px] sm:items-center lg:ml-[-10px]  sm:w-[260px] h-[50px] rounded-md  border border-sky-500 focus:outline-none dark:bg-slate-700 pl-2"
+              className="lg:w-[400px] md:w-full  sm:h-[42px] sm:items-center lg:ml-[-10px]  sm:w-[260px] h-[50px] rounded-md  border border-sky-500 focus:outline-none pl-2"
             />
             <span
               onClick={() => setShowPassword((prev) => !prev)}
