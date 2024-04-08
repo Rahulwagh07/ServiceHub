@@ -15,30 +15,48 @@ export default function ProfileDropdown() {
   const ref = useRef(null)
 
   useOnClickOutside(ref, () => setOpen(false))
-  // if (!user) return null
-
+  if (!user){
+    return null
+  }
+  
   return (
     <button className="relative" onClick={() => setOpen(true)}>
       <div className="flex items-center gap-x-1">
-        {/* <img
+        <img
           src={user?.image}
           alt={`profile-${user?.username}`}
           className="aspect-square w-[30px] rounded-full object-cover"
-        /> */}
-        <div className="aspect-square w-[30px] rounded-full object-cover border"></div>
+        />
         <AiOutlineCaretDown className="text-sm text-richblack-100" />
       </div>
       {open && (
         <div
           onClick={(e) => e.stopPropagation()}
-          className="absolute top-[118%] right-0 z-[1000] overflow-hidden section_bg rounded-md shadow-lg dark:bg-slate-800 dark:text-slate-400 text-pure-greys-600"
+          className="absolute top-[118%] right-0 z-[1000] overflow-hidden section_bg rounded-md shadow-lg  text-pure-greys-600"
           ref={ref}
         >
-          <Link to="/dashboard/my-profile" onClick={() => setOpen(false)}>
-            <div className="flex w-full items-center gap-x-1 py-[10px] px-[12px] text-sm hover:text-sky-500">
-              <VscDashboard className="text-lg text-sky-500" />
-              Dashboard
-            </div>
+          {
+            user?.accountType === "ServiceCenter"  &&
+            <>
+            <Link to="/listed-services" onClick={() => setOpen(false)}>
+              <div className="flex w-full items-center gap-x-1 py-[10px] px-[12px] text-sm hover:text-sky-500">
+                <VscDashboard className="text-lg text-sky-500" />
+                Listed Services
+              </div>
+            </Link>
+            <Link to="/list-service" onClick={() => setOpen(false)}>
+              <div className="flex w-full items-center gap-x-1 py-[10px] px-[12px] text-sm hover:text-sky-500">
+                <VscDashboard className="text-lg text-sky-500" />
+                New Service
+              </div>
+            </Link>
+            </>
+          }
+          <Link to="/update-profile-picture" onClick={() => setOpen(false)}>
+              <div className="flex w-full items-center gap-x-1 py-[10px] px-[12px] text-sm hover:text-sky-500">
+                <VscDashboard className="text-lg text-sky-500" />
+                update profile photo
+              </div>
           </Link>
           <div
             onClick={() => {

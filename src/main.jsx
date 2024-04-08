@@ -1,20 +1,28 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider, Routes, Route } from "react-router-dom";
-import { Provider } from 'react-redux';
-import rootReducer from './reducer';
-import App from "./App";
-import { configureStore } from "@reduxjs/toolkit";
-import { Toaster } from 'react-hot-toast';
+import * as React from "react"
+import * as ReactDOM from "react-dom/client"
+import { createBrowserRouter, RouterProvider, Routes, Route } from "react-router-dom"
+import { Provider } from 'react-redux'
+import rootReducer from './reducer'
+import App from "./App"
+import { configureStore } from "@reduxjs/toolkit"
+import { Toaster } from 'react-hot-toast'
 import './index.css'
-import ErrorPage from "./pages/Error";
-import OpenRoute from "./components/auth/OpenRoute"
+ 
+//Pages
+import Home from "./pages/Home"
+import ListedServices from "./pages/ListedServices"
+import Cart from "./pages/Cart"
+import ListServices from "./pages/ListServices"
 import Login from "./pages/Login"
 import Signup from "./pages/Signup"
 import ForgotPassword from "./pages/ForgotPassword"
 import VerifyEmail from "./pages/VerifyEmail"
-import Home from "./pages/Home"
-import PrivateRoute from "./components/auth/PrivateRoute";
+import ErrorPage from "./pages/Error"
+
+//Components
+import OpenRoute from "./components/auth/OpenRoute"
+import PrivateRoute from "./components/auth/PrivateRoute"
+import UpdateProfilePicture from "./components/settings/UpdateProfilePicture"
 
 
 const store = configureStore({
@@ -57,15 +65,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/cart",
-        element: <OpenRoute><ForgotPassword/></OpenRoute>,
+        element: <PrivateRoute><Cart/></PrivateRoute>,
       },
       {
         path: "/list-service",
-        element: <PrivateRoute><ForgotPassword/></PrivateRoute>,
+        element: <PrivateRoute><ListServices/></PrivateRoute>,
       },
       {
         path: "/listed-services",
-        element: <PrivateRoute><ForgotPassword/></PrivateRoute>,
+        element: <PrivateRoute><ListedServices/></PrivateRoute>,
+      },
+      {
+        path: "/update-profile-picture",
+        element: <PrivateRoute><UpdateProfilePicture/></PrivateRoute>,
       },
     ]
   }
@@ -74,8 +86,8 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
+      <Toaster/>
       <RouterProvider router={router}>
-        <Toaster/>
       </RouterProvider>
     </Provider>
   </React.StrictMode>
