@@ -10,6 +10,8 @@ const {
   getServiceCenterDetails,
   getAllServicesOfOwner,
   editService,
+  getServiceDetails,
+  getAllServices,
 } = require("../controllers/ServiceCenter")
 
 // Rating Controllers Import
@@ -32,6 +34,8 @@ router.post("/deleteServiceCenter", auth, isServiceCenter, deleteServiceCenter)
 router.get("/getServiceCenterDetails", getServiceCenterDetails)
 router.get("/getAllServicesOfOwner", auth, isServiceCenter, getAllServicesOfOwner)
 router.post("/editService", auth, isServiceCenter, editService)
+router.post("/getServiceDetails", auth, isServiceCenter, getServiceDetails)
+router.post("/getAllServices", auth, getAllServices)
 
 // ********************************************************************************************************
 //                                      Rating and Review

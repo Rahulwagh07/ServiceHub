@@ -21,9 +21,9 @@ const serviceCenterSchema = new mongoose.Schema({
     email: {
         type: String
     },
-    services: [{
-        type: String
-    }],
+    services:{
+        type: [String],
+    },
     openingHours: {
         type: String
     },
@@ -37,7 +37,7 @@ const serviceCenterSchema = new mongoose.Schema({
     },
     status: {
         type: String,
-        enum: ["Draft", "Published"]
+        enum: ["draft", "published"]
     },
     createdAt: {
         type: Date,

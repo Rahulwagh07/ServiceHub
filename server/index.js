@@ -12,6 +12,7 @@ const userRoutes = require("./routes/User");
 const serviceCenterRoutes = require("./routes/ServiceCenter");
 const categoryRoutes = require("./routes/Category");
 const profileRoutes = require("./routes/Profile");
+const contactusRoutes = require("./routes/Contact");
 
 
 dotenv.config();
@@ -45,6 +46,7 @@ app.use("/api/auth", userRoutes);
 app.use("/api/serviceCenter", serviceCenterRoutes);
 app.use("/api", categoryRoutes);
 app.use("/api/profile", profileRoutes);
+app.use("/api/contact", contactusRoutes);
 
 
 app.get("/", (req, res) => {

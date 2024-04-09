@@ -1,18 +1,26 @@
-const ServiceCenter = require('../models/ServiceCenter');
+const ServiceCenter = require('../models/ServiceCenter')
 const Category = require('../models/Category')
+const {uploadImageToCloudinary} = require("../utils/imageUploader")
 
 
 exports.createServiceCenter = async (req, res) => {
     try {
-        const { name, phone, email, services, openingHours, category, status, image} = req.body;
+        const { name, phone, email, services, openingHours, category, status} = req.body;
         const ownerId = req.user.id;
 
-        if (!name || !phone  || !category ) {
+        if (!name || !phone  || !category) {
 			return res
 				.status(400)
 				.json({ success: false, message: "All fields are required" });
 		}
-        const foundCategory = await Category.findOne({ name: category });
+        const foundCategory = await Category.findById(category);
+
+         // Upload the image to cloudinary
+         const serviceCoverImage = req.files.image
+         const serviceImageFromCloudinary = await uploadImageToCloudinary(
+            serviceCoverImage,
+            process.env.FOLDER_NAME
+            )
 
         // Create the service center with the found or newly created category ID
         const newServiceCenter = await ServiceCenter.create({
@@ -23,8 +31,8 @@ exports.createServiceCenter = async (req, res) => {
             services,
             openingHours,
             category: foundCategory._id,  
-            status,
-            image
+            status: status,
+            image: serviceImageFromCloudinary.secure_url,
         });
 
         // Add the newly created service in category
@@ -140,3 +148,63 @@ exports.editService = async (req, res) => {
         });
     }
 };
+
+exports.getServiceDetails = async (req, res) => {
+    try {
+        const userId = req.user.id
+        const { serviceId } = req.body;
+        const serviceDetail = await ServiceCenter.findById(serviceId)
+
+        if (!serviceDetail) {
+            return res.status(400).json({
+                success: false,
+                message: "Service not found.",
+            })
+        }
+
+        return res.status(200).json({
+            success: true,
+            data:{
+                serviceDetail,
+            }
+        })
+    } catch (error) {
+        return res.status(500).json({
+            success: false, 
+            error: error.message 
+        });
+    }
+}
+
+exports.getAllServices = async (req, res) => {
+    try {
+        const { searchQuery } = req.body;
+
+        let query = {
+            status: 'published',
+        };
+
+        if (searchQuery) {
+            // Apply the search query to filter services
+            query = {
+                ...query,
+                $or: [
+                    { category: { $regex: searchQuery, $options: 'i' } },
+                    { name: { $regex: searchQuery, $options: 'i' } }
+                ]
+            };
+        }
+
+        const servicesDetails = await ServiceCenter.find(query);
+
+        res.status(201).json({ 
+            success: true, 
+            data: servicesDetails 
+        });
+    } catch (error) {
+        res.status(500).json({ 
+            success: false, 
+            error: "Server error"
+        });
+    }
+}
