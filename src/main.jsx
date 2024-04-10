@@ -18,11 +18,16 @@ import Signup from "./pages/Signup"
 import ForgotPassword from "./pages/ForgotPassword"
 import VerifyEmail from "./pages/VerifyEmail"
 import ErrorPage from "./pages/Error"
+import Contact from "./pages/Contact"
+import EditService from "./pages/EditService"
+import Search from "./pages/Search"
 
 //Components
 import OpenRoute from "./components/auth/OpenRoute"
 import PrivateRoute from "./components/auth/PrivateRoute"
 import UpdateProfilePicture from "./components/settings/UpdateProfilePicture"
+ 
+ 
 
 
 const store = configureStore({
@@ -61,7 +66,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/search",
-        element: <PrivateRoute><ForgotPassword/></PrivateRoute>,
+        element: <PrivateRoute><Search/></PrivateRoute>,
       },
       {
         path: "/cart",
@@ -78,6 +83,14 @@ const router = createBrowserRouter([
       {
         path: "/update-profile-picture",
         element: <PrivateRoute><UpdateProfilePicture/></PrivateRoute>,
+      },
+      {
+        path: "/contact",
+        element: <Contact/>,
+      },
+      {
+        path: "/edit-service/:serviceId",
+        element: <PrivateRoute><EditService/></PrivateRoute>,
       },
     ]
   }

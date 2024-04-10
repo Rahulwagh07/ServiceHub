@@ -179,29 +179,25 @@ exports.getServiceDetails = async (req, res) => {
 exports.getAllServices = async (req, res) => {
     try {
         const { searchQuery } = req.body;
+        console.log("SEARCH QUERY", searchQuery);
 
-        let query = {
-            status: 'published',
+        // Construct a query object for searching by name or category name
+        const query = {
+            $or: [
+                { name: { $regex: searchQuery, $options: 'i' } },
+                // Populate the category field to get the category name
+                { category: { $in: await Category.find({ name: { $regex: searchQuery, $options: 'i' } }).distinct('_id') } }
+            ]
         };
-
-        if (searchQuery) {
-            // Apply the search query to filter services
-            query = {
-                ...query,
-                $or: [
-                    { category: { $regex: searchQuery, $options: 'i' } },
-                    { name: { $regex: searchQuery, $options: 'i' } }
-                ]
-            };
-        }
 
         const servicesDetails = await ServiceCenter.find(query);
 
-        res.status(201).json({ 
+        res.status(200).json({ 
             success: true, 
             data: servicesDetails 
         });
     } catch (error) {
+        console.error("Error in fetching services", error);
         res.status(500).json({ 
             success: false, 
             error: "Server error"
