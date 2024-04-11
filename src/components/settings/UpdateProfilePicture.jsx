@@ -8,11 +8,9 @@ export default function UpdateProfilePicture() {
   const { token } = useSelector((state) => state.auth)
   const { user } = useSelector((state) => state.profile)
   const dispatch = useDispatch()
-
   const [loading, setLoading] = useState(false)
   const [imageFile, setImageFile] = useState(null)
   const [previewSource, setPreviewSource] = useState(null)
-
   const fileInputRef = useRef(null)
 
   const handleClick = () => {
@@ -55,7 +53,7 @@ export default function UpdateProfilePicture() {
   }, [imageFile])
   return (
     <>
-      <div className="flex items-center justify-between rounded-md  border border-sky-400 section_bg box-shadow  p-8 sm:px-1 px-12 font-semibold">
+      <div className="flex items-center justify-between rounded-md mx-auto mt-20  border border-sky-400 section_bg box-shadow  p-8 sm:px-1 px-12 font-semibold">
         <div className="flex items-center gap-x-4">
           <img
             src={previewSource || user?.image}

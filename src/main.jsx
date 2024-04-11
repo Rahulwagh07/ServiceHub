@@ -11,7 +11,6 @@ import './index.css'
 //Pages
 import Home from "./pages/Home"
 import ListedServices from "./pages/ListedServices"
-import Cart from "./pages/Cart"
 import ListServices from "./pages/ListServices"
 import Login from "./pages/Login"
 import Signup from "./pages/Signup"
@@ -27,9 +26,6 @@ import OpenRoute from "./components/auth/OpenRoute"
 import PrivateRoute from "./components/auth/PrivateRoute"
 import UpdateProfilePicture from "./components/settings/UpdateProfilePicture"
  
- 
-
-
 const store = configureStore({
   reducer: rootReducer,
 });
@@ -67,10 +63,6 @@ const router = createBrowserRouter([
       {
         path: "/search",
         element: <PrivateRoute><Search/></PrivateRoute>,
-      },
-      {
-        path: "/cart",
-        element: <PrivateRoute><Cart/></PrivateRoute>,
       },
       {
         path: "/list-service",

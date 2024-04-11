@@ -3,13 +3,11 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 import { ACCOUNT_TYPE } from '../../utils/constants';
 import { useState } from 'react';
-import {toast} from "react-hot-toast"
 import Tab from '../common/Tab';
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 import { setSignupData } from '../../slices/authSlice';
 import { sendOtp } from '../../services/operations/authAPI';
  
-
 function SignupForm() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -40,11 +38,7 @@ function SignupForm() {
         ...formData,
         accountType,
         }
-
-        // Setting signup data to state
-        // To be used after otp verification
         dispatch(setSignupData(signupData))
-        // Send OTP to user for verification
         dispatch(sendOtp(formData.email, navigate))
 
         // Reset
@@ -71,7 +65,7 @@ function SignupForm() {
     ]
 
   return (
-    <div className='lg:w-[500px] flex flex-col items-center justify-center text-black'>
+    <div className='lg:w-[500px] md:w-[500px] flex flex-col items-center justify-center text-black'>
         <Tab tabData={tabData} field={accountType} setField={setAccountType}/>
 
         <form onSubmit={handleOnSubmit} className="flex w-full flex-col items-center justify-center gap-4 lg:w-[380px]">

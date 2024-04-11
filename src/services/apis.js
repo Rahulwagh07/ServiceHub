@@ -21,4 +21,11 @@ export const endpoints = {
     ADD_SERVICECENTER_DETAILS_API: BASE_URL + "/serviceCenter/createServiceCenter",
     EDIT_SERVICECENTER_API: BASE_URL + "/serviceCenter/editService",
     GET_ALL_SERVICES_FOR_OWNER_API: BASE_URL + "/serviceCenter/getAllServicesOfOwner",
+    GET_SERVICES_CATEGORIES_API: BASE_URL + "/showAllCategories",
+    GET_SERVICE_DETAILS_API: BASE_URL + "/serviceCenter/getServiceDetails",
+    GET_ALL_SERVICES_API: BASE_URL + "/serviceCenter/getAllServices",
+  }
+
+  export const contactusEndpoint = {
+    CONTACT_US_API: BASE_URL + "/contact",
   }

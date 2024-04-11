@@ -1,5 +1,4 @@
 import { toast } from "react-hot-toast"
-
 import { setLoading, setToken } from "../../slices/authSlice"
 import { setUser } from "../../slices/profileSlice"
 import { apiConnector } from "../apiConnector"
@@ -13,8 +12,7 @@ const {
     RESETPASSWORD_API,
   } = endpoints
 
-  
-export function sendOtp(email, navigate) {
+  export function sendOtp(email, navigate) {
     return async (dispatch) => {
       const toastId = toast.loading("Loading...")
       dispatch(setLoading(true))
@@ -72,42 +70,79 @@ export function sendOtp(email, navigate) {
     }
   }
  
-  export function login(email, password, navigate) {
-    return async (dispatch) => {
-      const toastId = toast.loading("Loading...")
-      dispatch(setLoading(true))
-      try {
-        const response = await apiConnector("POST", LOGIN_API, {
-          email,
-          password,
-        })
+  // export function login(email, password, navigate) {
+  //   return async (dispatch) => {
+  //     const toastId = toast.loading("Loading...")
+  //     dispatch(setLoading(true))
+  //     try {
+  //       const response = await apiConnector("POST", LOGIN_API, {
+  //         email,
+  //         password,
+  //       })
   
-        if (!response.data.success) {
-          throw new Error(response.data.message)
-        }
+  //       if (!response.data.success) {
+  //         throw new Error(response.data.message)
+  //       }
   
-        toast.success("Login Successful")
-        dispatch(setToken(response.data.token))
-        const userImage = response.data?.user?.image
-          ? response.data.user.image
-          : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.user.username} ${response.data.user.username}`
-        dispatch(setUser({ ...response.data.user, image: userImage}))
-        localStorage.setItem("user", JSON.stringify({ ...response.data.user, image: userImage}))
-        localStorage.setItem("token", JSON.stringify(response.data.token))
-        if(response.data?.user?.accountType === "Visitor"){
-          navigate("/search")
-        } else{
-          navigate("/listed-services")
-        }
-      } catch (error) {
-        toast.error("Login Failed")
+  //       toast.success("Login Successful")
+  //       dispatch(setToken(response.data.token))
+  //       const userImage = response.data?.user?.image
+  //         ? response.data.user.image
+  //         : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.user.username} ${response.data.user.username}`
+  //       dispatch(setUser({ ...response.data.user, image: userImage}))
+  //       localStorage.setItem("user", JSON.stringify({ ...response.data.user, image: userImage}))
+  //       localStorage.setItem("token", JSON.stringify(response.data.token))
+  //       //Not working- navigate????
+  //       if(response.data.user.accountType === "Visitor"){
+  //             navigate("/search")
+  //       } else{
+  //         navigate("/listed-services")
+  //       }
+  //     } catch (error) {
+  //       toast.error("Login Failed")
+  //     }
+  //     dispatch(setLoading(false))
+  //     toast.dismiss(toastId)
+  //   }
+  // }
+
+  export const login = async (email, password, dispatch) => {
+    let success = false;
+    let accountType;
+    const toastId = toast.loading("Loading...");
+    dispatch(setLoading(true));
+    try {
+      const response = await apiConnector("POST", LOGIN_API, {
+        email,
+        password,
+      });
+    
+      if (!response.data.success) {
+        throw new Error(response.data.message);
       }
-      dispatch(setLoading(false))
-      toast.dismiss(toastId)
+    
+      toast.success("Login Successful");
+      dispatch(setToken(response.data.token));
+      const userImage = response.data?.user?.image
+        ? response.data.user.image
+        : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.user.username} ${response.data.user.username}`;
+      dispatch(setUser({ ...response.data.user, image: userImage }));
+      localStorage.setItem(
+        "user",
+        JSON.stringify({ ...response.data.user, image: userImage })
+      );
+      localStorage.setItem("token", JSON.stringify(response.data.token));
+      accountType = response.data.user.accountType;
+      success = true;
+    } catch (error) {
+      toast.error("Login Failed");
     }
-  }
- 
-export function getPasswordResetToken(email, setEmailSent) {
+    dispatch(setLoading(false));
+    toast.dismiss(toastId);
+    return { success, accountType }; 
+  };
+
+  export function getPasswordResetToken(email, setEmailSent) {
     return async (dispatch) => {
       const toastId = toast.loading("Loading...")
       dispatch(setLoading(true))
