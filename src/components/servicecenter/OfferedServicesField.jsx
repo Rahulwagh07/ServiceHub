@@ -22,8 +22,8 @@ export default function OfferedServicesField({
   }, [])
 
   useEffect(() => {
-    setValue(name, setServicesList)
-   }, [setServicesList])
+    setValue(name, servicesList)
+   }, [servicesList])
 
   const handleAddServices = () => {
     if (services) {
@@ -39,7 +39,7 @@ export default function OfferedServicesField({
   }
 
   return (
-    <div className="flex flex-col space-y-2">
+    <div className="flex flex-col space-y-2 mb-2">
       <label htmlFor={name}>
         {label} <sup className="text-pink-200">*</sup>
       </label>
@@ -54,7 +54,7 @@ export default function OfferedServicesField({
         <button
           type="button"
           onClick={handleAddServices}
-          className="font-semibold"
+          className="font-semibold text-sky-400"
         >
           Add
         </button>
@@ -66,7 +66,7 @@ export default function OfferedServicesField({
               <span>{service}</span>
               <button
                 type="button"
-                className="ml-2 text-xs text-pure-greys-300 "
+                className="ml-2 text-sm text-red-500"
                 onClick={() => handleRemoveServices(index)}
               >
                 clear

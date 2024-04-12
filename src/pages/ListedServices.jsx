@@ -23,16 +23,10 @@ function ListedServices() {
     }, [])
 
     return (
-        <div className="w-10/12 mx-auto mt-8">
-            <div className="flex items-center justify-between mb-4">
-                <h1 className="text-3xl sm:text-lg font-medium text-black">Listed Services</h1>
-                <IconBtn
-                    text="List new service"
-                    onclick={() => navigate("/list-service")}
-                    >
-                    <VscAdd />
-                </IconBtn>
-            </div>
+        <div className="w-10/12 sm:w-11/12 mx-auto sm:mx-0 mt-8">
+            <h1 className="text-3xl text-center font-semibold text-slate-700 mt-4 mb-6">
+            <span className=" p-2 border border-blue-150 rounded-md">Your Listed Services</span>
+          </h1>
             {services && <div>
                 {services?.length === 0 ? (
                     <div className="shadow-lg p-10 mt-10  border-sky-500 border-t flex items-center justify-center">

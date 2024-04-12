@@ -46,7 +46,7 @@ app.use("/api/auth", userRoutes);
 app.use("/api/serviceCenter", serviceCenterRoutes);
 app.use("/api", categoryRoutes);
 app.use("/api/profile", profileRoutes);
-app.use("/api/contact", contactusRoutes);
+app.use("/api", contactusRoutes);
 
 
 app.get("/", (req, res) => {

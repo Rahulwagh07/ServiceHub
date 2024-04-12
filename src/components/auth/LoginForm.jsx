@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import { useNavigate, Link} from 'react-router-dom'
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 import { login } from "../../services/operations/authAPI"
+import { ACCOUNT_TYPE } from '../../utils/constants'
  
 function LoginForm() {
     const navigate  = useNavigate()
@@ -21,14 +22,21 @@ function LoginForm() {
         }))
     }
 
-    const handleOnSubmit = async(e) => {
-        e.preventDefault()
-        const res = await login(email, password, dispatch);
-        const {success} = res;
-        if (success) {
-            navigate('/search');
+    const handleOnSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const { success, accountType } = await login(email, password, dispatch);
+            if (success) {
+                if (accountType === ACCOUNT_TYPE.VISITOR) {
+                    navigate("/search")
+                } else {
+                    navigate("/listed-services")
+                }
+            }  
+        } catch (error) {
+            console.log("Login Error", error)
         }
-      }
+    }
 
   return (
     <form

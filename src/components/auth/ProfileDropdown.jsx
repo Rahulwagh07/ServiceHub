@@ -1,11 +1,13 @@
 import { useRef, useState } from "react"
 import { AiOutlineCaretDown } from "react-icons/ai"
-import { VscDashboard, VscSignOut } from "react-icons/vsc"
+import { VscSignOut } from "react-icons/vsc"
 import { useDispatch, useSelector } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
-
 import useOnClickOutside from "../../hooks/useOnClickOutside"
 import { logout } from "../../services/operations/authAPI"
+import { MdAddAPhoto } from "react-icons/md";
+import { MdOutlineNewLabel } from "react-icons/md";
+import { LuListTree } from "react-icons/lu";
 
 export default function ProfileDropdown() {
   const { user } = useSelector((state) => state.profile)
@@ -27,7 +29,7 @@ export default function ProfileDropdown() {
           alt={`profile-${user?.username}`}
           className="aspect-square w-[30px] rounded-full object-cover"
         />
-        <AiOutlineCaretDown className="text-sm text-richblack-100" />
+        <AiOutlineCaretDown className="text-sm text-sky-400" />
       </div>
       {open && (
         <div
@@ -38,24 +40,24 @@ export default function ProfileDropdown() {
           {
             user?.accountType === "ServiceCenter"  &&
             <>
-            <Link to="/listed-services" onClick={() => setOpen(false)}>
-              <div className="flex w-full items-center gap-x-1 py-[10px] px-[12px] text-sm hover:text-sky-500">
-                <VscDashboard className="text-lg text-sky-500" />
-                Listed Services
+            <Link to="/list-service" onClick={() => setOpen(false)}>
+              <div className="flex w-full items-center gap-x-1 py-[10px] px-[18px] text-sm hover:text-sky-500">
+                <MdOutlineNewLabel className="text-2xl text-sky-500" />
+                New Service
               </div>
             </Link>
-            <Link to="/list-service" onClick={() => setOpen(false)}>
-              <div className="flex w-full items-center gap-x-1 py-[10px] px-[12px] text-sm hover:text-sky-500">
-                <VscDashboard className="text-lg text-sky-500" />
-                New Service
+            <Link to="/listed-services" onClick={() => setOpen(false)}>
+              <div className="flex w-full items-center gap-x-1 py-[10px] px-[18px] text-sm hover:text-sky-500">
+                <LuListTree className="text-2xl text-sky-500" />
+                Listed Services
               </div>
             </Link>
             </>
           }
           <Link to="/update-profile-picture" onClick={() => setOpen(false)}>
-              <div className="flex w-full items-center gap-x-1 py-[10px] px-[12px] text-sm hover:text-sky-500">
-                <VscDashboard className="text-lg text-sky-500" />
-                update profile photo
+              <div className="flex w-full items-center gap-x-1 py-[10px] px-[18px] text-sm hover:text-sky-500">
+                <MdAddAPhoto className="text-lg text-sky-500" />
+                 Profile Pic
               </div>
           </Link>
           <div
@@ -63,7 +65,7 @@ export default function ProfileDropdown() {
               dispatch(logout(navigate))
               setOpen(false)
             }}
-            className="flex w-full items-center gap-x-1 py-[10px] px-[12px] text-sm hover:text-sky-500"
+            className="flex w-full items-center gap-x-1 py-[10px] px-[18px] text-sm hover:text-sky-500"
           >
             <VscSignOut className="text-lg text-sky-500" />
             Logout

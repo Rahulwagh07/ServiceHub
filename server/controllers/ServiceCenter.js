@@ -7,7 +7,12 @@ exports.createServiceCenter = async (req, res) => {
     try {
         const { name, phone, email, services, openingHours, category, status} = req.body;
         const ownerId = req.user.id;
-
+        
+        let updatedServices;
+        if (typeof services === 'string') {
+            // Split the string based on commas and store each element as an array
+           updatedServices = services.split(',').map(service => service.trim());
+        }
         if (!name || !phone  || !category) {
 			return res
 				.status(400)
@@ -28,7 +33,7 @@ exports.createServiceCenter = async (req, res) => {
             ownerId,
             phone,
             email,
-            services,
+            services: updatedServices,
             openingHours,
             category: foundCategory._id,  
             status: status,
@@ -118,8 +123,13 @@ exports.getAllServicesOfOwner = async (req, res) => {
 exports.editService = async (req, res) => {
     try {
         const { serviceId, name, phone, email, services, openingHours, status, image } = req.body;
-        if (!serviceId || !name || !phone) {
+        if (!serviceId) {
             return res.status(400).json({ success: false, error: 'Required fields missing' });
+        }
+        let updatedServices = services;
+        if (typeof services === 'string') {
+            // Split the string based on commas and store each element as an array
+           updatedServices = services.split(',').map(service => service.trim());
         }
         const existingService = await ServiceCenter.findById(serviceId);
 
@@ -130,21 +140,22 @@ exports.editService = async (req, res) => {
         existingService.name = name;
         existingService.phone = phone;
         existingService.email = email;
-        existingService.services = services;
+        existingService.services = updatedServices;
         existingService.openingHours = openingHours;
         existingService.status = status;
         existingService.image = image;
-
-        //To do - category update
-        await existingService.save();
+       
+        const updatedService = await existingService.save();
+       
         return res.status(200).json({ 
             success: true, 
-            data: existingService
+            data: updatedService
         });
+
     } catch (error) {
         return res.status(500).json({ 
             success: false, 
-            error: 'Error in updating service' 
+            error: 'Error in updating service',
         });
     }
 };
@@ -179,8 +190,7 @@ exports.getServiceDetails = async (req, res) => {
 exports.getAllServices = async (req, res) => {
     try {
         const { searchQuery } = req.body;
-        console.log("SEARCH QUERY", searchQuery);
-
+        
         // Construct a query object for searching by name or category name
         const query = {
             $or: [

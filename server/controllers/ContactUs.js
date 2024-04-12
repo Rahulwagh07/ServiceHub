@@ -8,9 +8,9 @@ exports.contactUsController = async (req, res) => {
   const { email, name, phoneNo, subject, message} = req.body
   try {
     await mailSender(
-      email,
-      "Your Message sent successfully",
-      contactUsEmail(email, name, message)
+      "rahulwagh3774@gmail.com",
+      "Got New message from ServiceHub",
+      contactUsEmail(email, message)
     )
     await Contact.create({
       name: name,

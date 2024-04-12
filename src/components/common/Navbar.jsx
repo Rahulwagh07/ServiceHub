@@ -3,13 +3,11 @@ import { Link} from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { NavbarLinks } from '../../data/navabarlinks'
 import { IoReorderThree } from 'react-icons/io5';
-import { RxCross1 } from "react-icons/rx";
 import { useRef } from 'react';
 import  useOnClickOutside  from "../../hooks/useOnClickOutside"
-import logo from "../../assets/newLogo.png"
+import logo from "../../assets/logo.png"
 import ProfileDropdown from '../auth/ProfileDropdown';
  
-
 function Navbar() {
 
   const {token} = useSelector((state) => state.auth)
@@ -27,9 +25,9 @@ function Navbar() {
   return (
     <div className='flex items-center justify-center transition-all duration-300 section_bg py-4 box-shadow'>
       <nav className='flex justify-between max-w-maxScreen w-10/12 text-lg relative h-[50px] sm:h-[40px]'>
-        <Link to={"/"} className='flex gap-4 items-center justify-center'>
-            <img src={logo} alt='logo' className="h-28 w-28 absolute left-[-30px] sm:top-[-25px] top-[-20px]"/>
-            <h3 className='text-sky-400 font-semibold ml-16'>HireZ</h3>
+        <Link to={"/"} className='flex gap-2 items-center justify-center'>
+            <img src={logo} alt='logo' className="h-10 w-10"/>
+            <h3 className='text-sky-400 font-semibold'>SERVICEHUB</h3>
         </Link>
 
           {/*Small and Medium screen*/}

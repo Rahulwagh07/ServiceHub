@@ -35,7 +35,6 @@ export const listService = async (data, token) => {
 export const editServiceDetails = async (data, token) => {
     let result = null
     const toastId = toast.loading("Loading....")
-
     try{
         const response = await apiConnector("POST", EDIT_SERVICECENTER_API, data, { 
            "Content-Type": "multipart/form-data",
@@ -47,7 +46,7 @@ export const editServiceDetails = async (data, token) => {
         toast.success("Service updated")
         result = response?.data?.data
     } catch (error){
-        toast.error(error.message)
+        toast.error("Service not updated")
     }
     toast.dismiss(toastId)
     return result
@@ -116,7 +115,6 @@ export const getServiceDetails = async (serviceId, token) => {
 
 export const getAllServices = async (searchQuery, token) => {
     let result = [];
-
     try {
         const response = await apiConnector("POST", GET_ALL_SERVICES_API,
         searchQuery, 
@@ -129,9 +127,8 @@ export const getAllServices = async (searchQuery, token) => {
             throw new Error("Could not get the all services");
         }
         result = response?.data?.data;
-        console.log("Result getallservices", result)
     } catch (error) {
-        toast.error(error.message);
+        console.log("Get all services API Error", error.message)
     }
     return result;
 }

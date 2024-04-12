@@ -9,28 +9,19 @@ const serviceCenterSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
     },
-    // location: {
-    //     address: String,
-    //     city: String,
-    //     state: String,
-    //     zipCode: String
-    // },
     phone: {
         type: String
     },
     email: {
         type: String
     },
-    services:{
-        type: [String],
+    services: {
+        type: [String],  
+        default: []  
     },
     openingHours: {
         type: String
     },
-    ratingAndReviews: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "RatingAndReview"
-    }],
     category: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Category"

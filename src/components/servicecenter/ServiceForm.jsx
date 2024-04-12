@@ -9,8 +9,8 @@ import OfferedServicesField from "./OfferedServicesField"
 import ImageUpload from "./ImageUpload"
 import { listService, editServiceDetails, fetchServicesCategories} from "../../services/operations/serviceCenterAPI"
 import IconBtn from "../common/IconBtn"
-import { MdNavigateNext } from "react-icons/md"
-
+import { BsBoxArrowInUpRight } from "react-icons/bs";
+ 
 export default function ServiceForm() {
     const dispatch = useDispatch()
     const { token } = useSelector((state) => state.auth)
@@ -66,86 +66,62 @@ export default function ServiceForm() {
         }
       }
     
-    const onSubmit = async (data) => {
-        if(editService){
-            if(isFormUpdated()){
+      const onSubmit = async (data) => {
+        if (editService) {
+            if (isFormUpdated()) {
                 const currentValues = getValues()
                 const formData = new FormData()
                 formData.append("serviceId", service._id)
-                if(currentValues.name !== service.name){
-                    formData.append("name", data.name)
-                }
-                if(currentValues.phone !== service.phone){
-                    formData.append("phone", data.phone)
-                }
-                if(currentValues.email !== service.email){
-                    formData.append("email", data.email)
-                }
-                if (currentValues.category._id !== service.category._id) {
-                    formData.append("category", data.category)
-                }
-                if(currentValues.status !== service.status){
-                    formData.append("status", data.status)
-                }
-                if (currentValues.services.toString() !==
-                      service.services.toString()
-                ) {
-                    formData.append(
-                      "services",
-                      JSON.stringify(data.services)
-                    )
-                }
-                if (currentValues.image !== service.image) {
-                    formData.append("image", data.image)
-                }
-                 
+                formData.append("name", data.name)
+                formData.append("phone", data.phone)
+                formData.append("email", data.email)
+                formData.append("category", data.category)
+                formData.append("status", data.status)
+                formData.append("services", data.services)
+                formData.append("image", data.image)
+           
                 setLoading(true)
                 const result = await editServiceDetails(formData, token)
                 setLoading(false)
-                if(result){
+                if (result) {
                     dispatch(setService(result))
                     dispatch(setEditService(false))
                     navigate("/listed-services")
                 }
             } else {
                 toast.error("No changes made in the form")
-                dispatch(setEditService(false))
             }
-            return
-        }
+        } else {
+            const formData = new FormData()
+            formData.append("name", data.name)
+            formData.append("phone", data.phone)
+            formData.append("email", data.email)
+            formData.append("category", data.category)
+            formData.append("services", data.services)
+            formData.append("image", data.image)
+            formData.append("status", data.status)
     
-        const formData = new FormData()
-        formData.append("name", data.name)
-        formData.append("phone", data.phone)
-        formData.append("email", data.email)
-        formData.append("category", data.category)
-        formData.append("services", JSON.stringify(data.services))
-        formData.append("image", data.image)
-        formData.append("status", data.status)
-
-        setLoading(true)
-        const result = await listService(formData, token)
-        if (result){
-            dispatch(setService(result))
+            setLoading(true)
+            const result = await listService(formData, token)
+            setLoading(false)
             dispatch(setEditService(false))
             navigate("/listed-services")
         }
-        setLoading(false)
     }
-
+    
     return (
         <form 
             onSubmit={handleSubmit(onSubmit)}
-            className="space-y-6 rounded-md  border-l border-b border-blue-150  p-8  shadow-xl text-sm text-pure-greys-600"
+            className="rounded-md md:p-8 lg:p-8 sm:p-2  shadow-xl text-sm text-slate-800 font-semibold"
         >
-        {/* Service Name */}
+        {/* ServiceCenter Name */}
         <div className="flex flex-col space-y-2">
             <label htmlFor="name">
-            Service Name <sup className="text-pink-200">*</sup>
+            ServiceCenter Name <sup className="text-pink-200">*</sup>
             </label>
             <input
             id="name"
-            placeholder="Service Name"
+            placeholder="ServiceCenter Name"
             {...register("name", { required: true })}
             className="form-style w-full border border-sky-500"
             />
@@ -260,14 +236,14 @@ export default function ServiceForm() {
             )}
         </div>
 
-        <div className="flex justify-end gap-x-2 sm:flex-col sm:gap-4">
+        <div className="flex justify-end gap-x-2 mt-3 sm:flex-col sm:gap-4">
             <IconBtn
             onClick={() => navigate("/listed-services")}
             disabled={loading}
             text={!editService ? "List Service" : "Save Changes"}
             customClasses={"py-5 text-white-25 flex items-center justify-center"}
             >
-            <MdNavigateNext />
+            <BsBoxArrowInUpRight/>
             </IconBtn>
 
             {editService && (
@@ -277,7 +253,7 @@ export default function ServiceForm() {
                     dispatch(setEditService(false));
                 }}
                 disabled={loading}
-                className={`flex cursor-pointer sm:py-5 items-center justify-center gap-x-2 rounded-md shadow-lg border-brand py-[8px] px-[20px] font-semibold text-pure-greys-700`}
+                className={`flex cursor-pointer sm:py-5 items-center justify-center gap-x-2 rounded-md shadow-lg border-brand py-[8px] px-[20px] font-semibold`}
             >
                 List service without saving
             </button>

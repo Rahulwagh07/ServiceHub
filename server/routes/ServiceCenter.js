@@ -14,13 +14,6 @@ const {
   getAllServices,
 } = require("../controllers/ServiceCenter")
 
-// Rating Controllers Import
-const {
-  createRating,
-  getAverageRating,
-  getAllRating,
-} = require("../controllers/RatingAndReview")
-
 // Importing Middlewares
 const { auth, isServiceCenter, isVisitor, isAdmin} = require("../middlewares/auth")
 
@@ -36,12 +29,5 @@ router.get("/getAllServicesOfOwner", auth, isServiceCenter, getAllServicesOfOwne
 router.post("/editService", auth, isServiceCenter, editService)
 router.post("/getServiceDetails", auth, isServiceCenter, getServiceDetails)
 router.post("/getAllServices", auth, getAllServices)
-
-// ********************************************************************************************************
-//                                      Rating and Review
-// ********************************************************************************************************
-router.post("/createRating", auth, isVisitor, createRating)
-router.get("/getAverageRating", getAverageRating)
-router.get("/getReviews", getAllRating)
 
 module.exports = router

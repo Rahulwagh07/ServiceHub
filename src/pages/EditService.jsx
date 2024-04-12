@@ -42,10 +42,10 @@ export default function EditService() {
 
     return (
         <div className="flex flex-col gap-3">
-          <h1 className="text-3xl font-medium text-black">
-            Edit job
+          <h1 className="text-3xl text-center font-semibold text-slate-700 mt-4">
+            <span className=" p-2 border border-blue-150 rounded-md"> Edit Service Details</span>
           </h1>
-          <div className="mt-4 max-w-[600px]">
+          <div className="mt-4 lg:w-8/12 md:w-11/12 sm:w-full sm:mx-0 lg:mx-auto md:mx-auto">
             {service ? (
               <ServiceForm/>
             ) : (

@@ -4,6 +4,7 @@ import { getAllServices } from '../services/operations/serviceCenterAPI';
 import { FiSearch } from 'react-icons/fi';
 import ServiceCard from '../components/servicecenter/ServiceCard';
 import Fuse from 'fuse.js';
+import Spinner from '../components/common/Spinner';
 
 function Search() {
   const { token } = useSelector((state) => state.auth);
@@ -11,6 +12,7 @@ function Search() {
   const [search, setSearch] = useState(false);
   const [showNoResult, setShowNoResult] = useState(false);
   const [services, setServices] = useState([]);
+  const [loading, setLoading] = useState(false);
   
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -22,6 +24,7 @@ function Search() {
   }, [searchQuery, search]);
 
   const fetchData = async () => {
+    setLoading(true);
     try {
       const servicesData = await getAllServices({ searchQuery }, token);
       const fuse = new Fuse(servicesData, {
@@ -32,8 +35,10 @@ function Search() {
       const finalResults = fuzzyResults.map((result) => result.item);
       setServices(finalResults);
       setShowNoResult(finalResults.length === 0);
+      setLoading(false);
     } catch (error) {
       console.error('Error in fetching services', error);
+      setLoading(false);
     }
   };
   
@@ -69,13 +74,20 @@ function Search() {
       </div>
   
       {/* Display Services */}
-      <div className="grid gap-4 mt-8 z-10">
-        {services?.map((service) => (
-          <span key={service._id} className='cursor-pointer border-l border-sky-500'>
-            <ServiceCard service={service} key={service._id} setServices={services}/>
-          </span>
-        ))}
+      <div className="grid gap-4 mt-8">
+        {loading ? (
+           <Spinner/>
+        ) : (
+          <>
+            {services?.map((service) => (
+              <span key={service._id} className='cursor-pointer'>
+                <ServiceCard service={service} key={service._id} setServices={services}/>
+              </span>
+            ))}
+          </>
+        )}
       </div>
+
   
       {/* No  Service Found */}
       {

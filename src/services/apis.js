@@ -9,7 +9,7 @@ export const endpoints = {
     RESETPASSWORD_API: BASE_URL + "/auth/reset-password",
   }
 
-  //job endpoints
+  //Profile endpoints
   export const profileEndpoints = {
     GET_USER_DETAILS_API: BASE_URL + "/profile/getUserDetails",
     UPDATE_DISPLAY_PICTURE_API: BASE_URL + "/profile/updateDisplayPicture",
