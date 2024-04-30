@@ -7,12 +7,10 @@ export default function OfferedServicesField({
   register,
   setValue,
   errors,
-  getValues,
 }) {
   const { editService, service } = useSelector((state) => state.service)
   const [services, setServices] = useState("")
   const [servicesList, setServicesList] = useState([])
-
   useEffect(() => {
     if (editService) {
         setServicesList(service?.services)
@@ -47,10 +45,12 @@ export default function OfferedServicesField({
         <input
           type="text"
           id={name}
+          placeholder="Enter service & click on add"
           value={services}
           onChange={(e) => setServices(e.target.value)}
-          className="form-style w-full border border-sky-500"
-        />
+          className="block w-full rounded-md border-0 py-1.5 text-gray-900 
+            shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 
+            focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
         <button
           type="button"
           onClick={handleAddServices}
@@ -76,7 +76,7 @@ export default function OfferedServicesField({
         </ul>
       )}
       {errors[name] && (
-        <span className="ml-2 text-xs tracking-wide text-pink-200">
+        <span className="ml-2 text-xs tracking-wide text-pink-500">
           {label} is required
         </span>
       )}

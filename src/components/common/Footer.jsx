@@ -42,7 +42,7 @@ const Footer = () => {
         </div>
 
         {/* Column 3 */}
-        <div className='flex flex-col gap-2 sm:items-center md:items-center'>
+        <div className='flex flex-col gap-2 xs:items-center sm:items-center md:items-center'>
           <h3 className="text-lg font-bold mb-4">Contact Us</h3>
           <p>Email: support@servicehub.com</p>
         </div>

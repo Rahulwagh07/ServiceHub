@@ -112,73 +112,77 @@ export default function ServiceForm() {
     return (
         <form 
             onSubmit={handleSubmit(onSubmit)}
-            className="rounded-md md:p-8 lg:p-8 sm:p-2  shadow-xl text-sm text-slate-800 font-semibold"
+            className="rounded-md md:p-8 lg:p-8 xs:p-2  shadow-xl text-sm text-slate-800 font-semibold"
         >
         {/* ServiceCenter Name */}
-        <div className="flex flex-col space-y-2">
+        <div className="flex flex-col mb-2">
             <label htmlFor="name">
-            ServiceCenter Name <sup className="text-pink-200">*</sup>
+            ServiceCenter Name <sup className="text-pink-500">*</sup>
             </label>
             <input
             id="name"
             placeholder="ServiceCenter Name"
             {...register("name", { required: true })}
-            className="form-style w-full border border-sky-500"
-            />
+            className="block w-full rounded-md border-0 py-1.5 text-gray-900 
+                shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 
+                focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
             {errors.name && (
-            <span className="ml-2 text-xs tracking-wide text-pink-200">
+            <span className="ml-2 text-xs tracking-wide text-pink-500">
                 Service Name is required
             </span>
             )}
             </div>
         {/* Contact No */}
-        <div className="flex flex-col space-y-2">
+        <div className="flex flex-col mb-2">
             <label htmlFor="phone">
-            Contact No <sup className="text-pink-200">*</sup>
+            Contact No <sup className="text-pink-500">*</sup>
             </label>
             <input
             id="phone"
             type="number"
             placeholder="Enter Phone No"
             {...register("phone", { required: true })}
-            className="form-style resize-x-none min-h-[60px] w-full border border-sky-500"
-            />
+            className="block w-full rounded-md border-0 py-1.5 text-gray-900 
+                shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 
+                focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
             {errors.phone && (
-            <span className="ml-2 text-xs tracking-wide text-pink-200">
+            <span className="ml-2 text-xs tracking-wide text-pink-500">
                 Phone no  is required
             </span>
             )}
         </div>
         {/* Email */}
-        <div className="flex flex-col space-y-2">
+        <div className="flex flex-col mb-2">
             <label htmlFor="email">
-            Email <sup className="text-pink-200">*</sup>
+            Email <sup className="text-pink-500">*</sup>
             </label>
             <input
             id="email"
             type="email"
             placeholder="Enter Email"
             {...register("email", { required: true })}
-            className="form-style  w-full border border-sky-500"
-            />
+            className="block w-full rounded-md border-0 py-1.5 text-gray-900 
+                shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 
+                focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
             {errors.email && (
-            <span className="ml-2 text-xs tracking-wide text-pink-200">
+            <span className="ml-2 text-xs tracking-wide text-pink-500">
                 Email is required
             </span>
             )}
         </div>
 
         {/* Category */}
-        <div className="flex flex-col space-y-2">
+        <div className="flex flex-col mb-2">
             <label htmlFor="category">
-            Course Category <sup className="text-pink-200">*</sup>
+            Course Category <sup className="text-pink-500">*</sup>
             </label>
             <select
             {...register("category", { required: true })}
             defaultValue=""
             id="category"
-            className="form-style w-full border border-sky-500"
-            >
+            className="block w-full rounded-md border-0 py-1.5 text-gray-900 
+                shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 
+                focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
             <option value="" disabled>
                 Choose a Category
             </option>
@@ -190,7 +194,7 @@ export default function ServiceForm() {
                 ))}
             </select>
             {errors.category && (
-            <span className="ml-2 text-xs tracking-wide text-pink-200">
+            <span className="ml-2 text-xs tracking-wide text-pink-500">
                 Course Category is required
             </span>
             )}
@@ -217,20 +221,21 @@ export default function ServiceForm() {
         />
 
         {/* status */}
-        <div className="flex flex-col space-y-2">
+        <div className="flex flex-col mb-2">
             <label htmlFor="status">
-                Select Service Status <sup className="text-pink-200">*</sup>
+                Select Service Status <sup className="text-pink-500">*</sup>
             </label>
             <select
                 id="status"
                 {...register("status", { required: true })}
-                className="form-style w-full border border-sky-500"
-            >
+                className="block w-full rounded-md border-0 py-1.5 text-gray-900 
+                    shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 
+                    focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
             <option value="published">Published</option>
             <option value="draft">Draft(publish later)</option>
             </select>
             {errors.status && (
-                <span className="ml-2 text-xs tracking-wide text-pink-200">
+                <span className="ml-2 text-xs tracking-wide text-pink-500">
                     Please select status
                 </span>
             )}
@@ -241,7 +246,10 @@ export default function ServiceForm() {
             onClick={() => navigate("/listed-services")}
             disabled={loading}
             text={!editService ? "List Service" : "Save Changes"}
-            customClasses={"py-5 text-white-25 flex items-center justify-center"}
+            customClasses={`flex w-full justify-center rounded-md bg-indigo-600 
+            px-3 py-1.5 text-sm font-semibold leading-6 text-white-25 shadow-sm
+             hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 
+             focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}
             >
             <BsBoxArrowInUpRight/>
             </IconBtn>
@@ -253,8 +261,10 @@ export default function ServiceForm() {
                     dispatch(setEditService(false));
                 }}
                 disabled={loading}
-                className={`flex cursor-pointer sm:py-5 items-center justify-center gap-x-2 rounded-md shadow-lg border-brand py-[8px] px-[20px] font-semibold`}
-            >
+                className="flex w-full justify-center rounded-md bg-indigo-600 
+                px-3 py-1.5 text-sm font-semibold leading-6 text-white-25 shadow-sm
+              hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 
+                focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                 List service without saving
             </button>
             )}

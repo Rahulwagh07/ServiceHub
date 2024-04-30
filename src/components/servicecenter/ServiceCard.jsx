@@ -8,7 +8,7 @@ const ServiceCard = ({ service, setServices }) => {
     const navigate = useNavigate()
     const { user } = useSelector((state) => state.profile)
   return (
-    <div className="flex text-slate-800 sm:flex-col gap-4 lg:w-8/12 md:w-full mx-auto items-center p-4 mb-6 rounded-md shadow-md">
+    <div className="flex text-slate-800 xs:flex-col gap-4 lg:w-8/12 md:w-full mx-auto items-center p-4 mb-6 rounded-md shadow-md">
     {/* Image */}
     <img
       src={service?.image}  

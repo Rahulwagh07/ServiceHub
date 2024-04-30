@@ -1,11 +1,9 @@
-import React from 'react'
+import { CgSpinner } from "react-icons/cg";
 import "./Spinner.css"
 
 function Spinner() {
   return (
-     <div className='text-center mt-12'>
-        <div class="lds-hourglass"></div>
-     </div>
+     <CgSpinner className="animate w-8 h-8"/>
   )
 }
 

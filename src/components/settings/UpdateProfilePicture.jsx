@@ -53,7 +53,8 @@ export default function UpdateProfilePicture() {
   }, [imageFile])
   return (
     <>
-      <div className="flex items-center justify-between rounded-md mx-auto mt-20  border border-sky-400 section_bg box-shadow  p-8 sm:px-1 px-12 font-semibold">
+      <div className="flex items-center justify-between rounded-md mx-auto mt-20  
+        border border-sky-400 section_bg box-shadow  p-8 sm:px-1 px-12 font-semibold">
         <div className="flex items-center gap-x-4">
           <img
             src={previewSource || user?.image}
@@ -73,7 +74,7 @@ export default function UpdateProfilePicture() {
               <button
                 onClick={handleClick}
                 disabled={loading}
-                className="cursor-pointer rounded-md bg-richblack-700 py-2 px-5 font-semibold text-richblack-50"
+                className="cursor-pointer rounded-md bg-gray-700 py-2 px-5 font-semibold text-gray-50"
               >
                 Select
               </button>
@@ -82,7 +83,7 @@ export default function UpdateProfilePicture() {
                 onclick={handleFileUpload}
               >
                 {!loading && (
-                  <FiUpload className="text-lg text-richblack-900" />
+                  <FiUpload className="text-lg text-gray-900" />
                 )}
               </IconBtn>
             </div>

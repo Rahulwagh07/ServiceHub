@@ -87,12 +87,10 @@ function Search() {
           </>
         )}
       </div>
-
-  
       {/* No  Service Found */}
       {
         showNoResult  && 
-        <div className='flex items-center justify-center dark:bg-slate-700 shadow-lg h-[200px] p-8 border-t border-sky-500 mt-2'>
+        <div className='flex items-center justify-center dark:bg-slate-700 shadow-lg h-[200px] p-8 border border-sky-500 mt-2'>
           <p className='text-pure-greys-400'>"No results! Adjust search term.. Your needed service just one step away from you"</p>
           </div>
       }

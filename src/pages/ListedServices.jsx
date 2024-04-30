@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import IconBtn from "../components/common/IconBtn"
-import { VscAdd } from "react-icons/vsc"
 import { getAllServicesOfOwner } from "../services/operations/serviceCenterAPI"
 import ServiceCard from "../components/servicecenter/ServiceCard"
 

@@ -66,7 +66,7 @@ function VerifyEmail() {
                   {...props}
                   placeholder="-"
                   style={{
-                    boxShadow: "inset 0px -1px 0px rgba(146, 143, 122, 0.18) form-style",
+                    boxShadow: "inset 0px -1px 0px rgba(146, 143, 122, 0.18) ",
                   }}
                   className="w-[48px] sm:w-[35px] lg:w-[60px] border-[1px] border-blue-150 rounded-[0.5rem] text-black aspect-square text-center focus:border-0 focus:outline-2 focus:outline-blue-150"
                 />
