@@ -103,16 +103,16 @@ export function ContactUsForm(){
     
   return (
     <form
-      className=" lg:w-[800px] md:w-[600px] sm:w-[300px] mx-auto mt-16 "
+      className=" lg:w-[800px] md:w-[600px] sm:w-[400px] md:mx-auto mt-16 xs:mt-8"
       onSubmit={handleSubmit(submitContactForm)}
     >
-      <div className="grid grid-cols-2 sm:grid-cols-1 gap-10 mb-9">
+      <div className="grid grid-cols-2 xs:grid-cols-1 gap-10 mb-9">
         <div className="relative">
           <input
             type="text"
             name="name"
             id="name"
-            className={`border-b-2 border-sky-500 w-full  bg-transparent focus:outline-none ${isNameFocused ? 'border-sky-500' : ''}`}
+            className={`border-0 w-full  bg-transparent focus:outline-none ${isNameFocused ? 'border-sky-500' : 'border-b-2 border-sky-500'}`}
             {...register("name", { required: true })}
             onFocus={handleNameFocus}
             onBlur={handleNameBlur}
@@ -136,7 +136,7 @@ export function ContactUsForm(){
           type="email"
           name="email"
           id="email"
-          className={`border-b-2 border-sky-500 w-full bg-transparent focus:outline-none ${isEmailFocused ? 'border-sky-500' : ''}`}
+          className={`border-0 w-full bg-transparent focus:outline-none ${isEmailFocused ? 'border-sky-500' : 'border-b-2 border-sky-500'}`}
           {...register("email", { required: true })}
           onFocus={handleEmailFocus}
           onBlur={handleEmailBlur}
@@ -160,7 +160,7 @@ export function ContactUsForm(){
           type="text"
           name="phoneNo"
           id="phoneNo"
-          className={`border-b-2 border-sky-500 w-full bg-transparent appearance-none focus:outline-none ${isPhoneNoFocused ? 'border-sky-500' : ''}`}
+          className={`border-0 w-full bg-transparent appearance-none focus:outline-none ${isPhoneNoFocused ? 'border-sky-500' : 'border-b-2 border-sky-500'}`}
           {...register("phoneNo", { required: true })}
           onFocus={handlePhoneNoFocus}
           onBlur={handlePhoneNoBlur}
@@ -184,7 +184,7 @@ export function ContactUsForm(){
           type="text"
           name="subject"
           id="subject"
-          className={`border-b-2 border-sky-500 w-full bg-transparent focus:outline-none ${isSubjectFocused ? 'border-sky-500' : ''}`}
+          className={`border-0 w-full bg-transparent focus:outline-none ${isSubjectFocused ? 'border-sky-500' : 'border-b-2 border-sky-500'}`}
           {...register("subject", { required: true })}
           onFocus={handleSubjectFocus}
           onBlur={handleSubjectBlur}
@@ -208,7 +208,7 @@ export function ContactUsForm(){
               type="text"
               name="message"
               id="message"
-              className={`border-b-2 border-sky-500 w-full bg-transparent focus:outline-none ${isMessageFocused ? 'border-sky-500' : ''}`}
+              className={`border-0 w-full bg-transparent focus:outline-none ${isMessageFocused ? 'border-sky-500' : 'border-b-2 border-sky-500'}`}
               {...register("message", { required: true })}
               onFocus={handleMessageFocus}
               onBlur={handleMessageBlur}
@@ -231,11 +231,11 @@ export function ContactUsForm(){
     <button
       disabled={loading}
       type="submit"
-      className={`rounded-md bg-[#60a5fa] mt-8 px-6 py-5 sm:px-4 sm:py-3 flex sm:mx-auto items-center gap-4 text-center text-[13px] font-semibold text-white-25 text-lg shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] 
+      className={`rounded-md bg-[#60a5fa] mt-8 px-6 py-5 sm:px-4 sm:py-3 flex xs:mx-auto items-center gap-4 text-center text-[13px] font-semibold text-white-25 text-lg shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] 
         ${
           !loading &&
           "transition-all duration-200 hover:scale-95 hover:shadow-none"
-        }  disabled:bg-richblack-500 sm:text-[16px] `}
+        }  disabled:bg-gray-500 sm:text-[16px] `}
     >
       {loading ?   "sending..." : "Send Message"} <VscSend/>
     </button>

@@ -12,7 +12,7 @@ function PrivateRoute({ children }) {
   if(user?.accountType === ACCOUNT_TYPE.SERVICECENTER && location.pathname === "/search"){
     return <ErrorPage/>
   }
-  if(user?.accountType === ACCOUNT_TYPE.VISITOR && location.pathname === "/listed-services" || location.pathname === "/list-service"){
+  if(user?.accountType === ACCOUNT_TYPE.VISITOR &&  (location.pathname === "/listed-services" || location.pathname === "/list-service")){
     return <ErrorPage/>
   }
   if (token !== null) {

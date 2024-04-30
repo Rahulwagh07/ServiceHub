@@ -66,17 +66,12 @@ details > summary::-webkit-details-marker {
   border-color: rgb(102, 116, 204);
   border-width: 1px;
 }
- 
-.form-style {
-  @apply rounded-lg  p-3 text-[16px] leading-[24px] text-black shadow-white-50 placeholder:text-richblack-400 focus:outline-none
-  focus:bg-transparent active:bg-transparent;
-}
+
 @layer utilities {
   .shadow-white-50 {
     box-shadow: rgba(255, 255, 255, 0.5) 0px 1px 0px 0px;
   }
 }
- 
 
 .text_gradient{
   @apply bg-gradient-to-br from-[#833AB4] via-[#FD1D1D] to-[#FCB045] bg-clip-text  font-semibold text-transparent;
