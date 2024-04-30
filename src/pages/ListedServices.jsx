@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom"
 import { getAllServicesOfOwner } from "../services/operations/serviceCenterAPI"
 import ServiceCard from "../components/servicecenter/ServiceCard"
 
 function ListedServices() {
     const { token } = useSelector((state) => state.auth)
-    const navigate = useNavigate()
     const [services, setServices] = useState([])
 
     useEffect(() => {

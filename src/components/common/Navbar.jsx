@@ -23,10 +23,9 @@ function Navbar() {
   return (
     <div className='flex items-center justify-center transition-all duration-300 py-4'>
       <nav className='flex justify-between max-w-maxScreen w-10/12 text-lg relative h-[40px] sm:h-[30px]'>
-        <Link to={"/"} className='flex gap-2 items-center justify-center'>
-            <img src={logo} alt='logo' className="h-10 w-10"/>
-            <h3 className='text-sky-400 font-semibold'>SERVICEHUB</h3>
-        </Link>
+      <Link to={"/"} className="flex items-center text-indigo-400 no-underline hover:no-underline font-bold text-2xl lg:text-4xl">
+            Servi<span className="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-500 to-purple-500">cehub</span>
+      </Link>
 
         {/*Small and Medium screen*/}
         <div className='flex gap-4 mt-2 md:hidden xs:flex'>

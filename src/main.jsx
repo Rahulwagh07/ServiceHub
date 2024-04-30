@@ -33,7 +33,7 @@ const store = configureStore({
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <App/>,
     errorElement: <ErrorPage/>,
     children: [
       {
