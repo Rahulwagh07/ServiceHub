@@ -2,6 +2,7 @@ import React from 'react';
 import logo from "../../assets/logo.png"
 import { Link as ScrollLink } from 'react-scroll';
 import { NavbarLinks } from  "../../data/navabarlinks"
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -9,8 +10,9 @@ const Footer = () => {
       <div className="container mx-auto grid sm:grid-cols-1 lg:grid-cols-3 gap-12">
         {/* Column 1 */}
         <div className='flex flex-col gap-2 items-center'>
-            <img src={logo} loading='lazy' alt='brand logo' className='h-10 w-10'/>
-            <h3 className="text-xl font-bold uppercase  top-20">ServiceHub</h3>
+            <Link to={"/"} className="flex items-center top-20 text-indigo-400 no-underline hover:no-underline font-bold text-2xl lg:text-4xl">
+              Servi<span className="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-500 to-purple-500">cehub</span>
+            </Link>
           <p className='text-base max-w-[300px]'>Where Needs Meet Solutions.</p>
         </div>
 

@@ -1,5 +1,4 @@
 import { useRef, useState } from "react"
-import { AiOutlineCaretDown } from "react-icons/ai"
 import { VscSignOut } from "react-icons/vsc"
 import { useDispatch, useSelector } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
@@ -23,13 +22,12 @@ export default function ProfileDropdown() {
   
   return (
     <button className="relative" onClick={() => setOpen(true)}>
-      <div className="flex items-center gap-x-1">
+      <div className="flex items-center">
         <img
           src={user?.image}
           alt={`profile-${user?.username}`}
           className="aspect-square w-[30px] rounded-full object-cover"
         />
-        <AiOutlineCaretDown className="text-sm text-sky-400" />
       </div>
       {open && (
         <div
