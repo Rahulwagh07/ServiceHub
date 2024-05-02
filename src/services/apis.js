@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:4000/api"
+const BASE_URL = import.meta.env.VITE_BASE_URL || "https://servicehub-backend.onrender.com/api"
 
 //Auth endpoints
 export const endpoints = {
