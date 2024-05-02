@@ -76,7 +76,7 @@ function Search() {
       {/* Display Services */}
       <div className="grid gap-4 mt-8">
         {loading ? (
-           <Spinner/>
+            <div className='flex items-center justify-center'><Spinner/></div>
         ) : (
           <>
             {services?.map((service) => (
